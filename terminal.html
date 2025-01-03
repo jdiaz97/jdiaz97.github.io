@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>José Díaz</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        :root {
+            --terminal-bg: rgba(16, 16, 24, 0.85);
+            --terminal-text: #CCC5B9;
+            --terminal-green: #98c379;
+            --terminal-prompt: #61afef;
+            --terminal-header: #c678dd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--terminal-bg);
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Monaco, monospace;
+            color: var(--terminal-text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        #terminal-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px 8px 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: none;
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+            margin-right: 20px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        .close { background-color: #ff5f56; }
+        .minimize { background-color: #ffbd2e; }
+        .maximize { background-color: #27c93f; }
+
+        .title {
+            color: var(--terminal-header);
+            flex-grow: 1;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        #resume-container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0 0 8px 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        #command-line {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        #command-line span {
+            color: var(--terminal-prompt);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        #command {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--terminal-text);
+            font-family: inherit;
+            font-size: 1em;
+            outline: none;
+            padding: 5px;
+        }
+
+        #command::placeholder {
+            color: rgba(204, 197, 185, 0.5);
+        }
+
+        .section-title {
+            color: var(--terminal-green);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        a {
+            color: var(--terminal-prompt);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        li::before {
+            content: "→";
+            color: var(--terminal-green);
+            position: absolute;
+            left: -20px;
+        }
+
+        #help div {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* Hide sections by default */
+        #about, #education, #projects, #experience, #skills, #contact, #connect, #error, #help, #get-resume {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Blinking cursor effect */
+        #command-line::after {
+            content: "▋";
+            animation: blink 1s step-end infinite;
+            color: var(--terminal-text);
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            #resume-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal-header">
+        <div class="terminal-buttons">
+            <div class="terminal-button close"></div>
+            <div class="terminal-button minimize"></div>
+            <div class="terminal-button maximize"></div>
+        </div>
+        <div class="title">josé@diaz: ~/get_to_know_me</div>
+    </div>
+
+    <div id="resume-container">
+        <div id="executed_commands">
+            <div>Welcome! Type <span style="color: var(--terminal-green)">help</span> to see available commands</div>
+        </div>
+
+        <div id="command-line">
+            <span>❯</span>
+            <input type="text" autofocus="autofocus" id="command" placeholder="Type a command..." autocomplete="off" />
+        </div>
+    </div>
+
+    <!-- Resume Sections -->
+
+    <!-- 1. About -->
+    <div id="about">
+        <div><strong>About Me</strong></div>
+        <div>I'm from Chile, born in 1997.</div>
+        <div>
+            I love programming and technology in general.  
+            If it wasn't because of the extreme existential threat of climate change, I'd probably be making video games.  
+            But right now, my main focus is to develop tools that can be useful to protect the planet.
+        </div>
+        <div>
+            Outside of work, I spend a lot of time on my hobbies, which include photography, playing guitar, composing music, and watching movies.
+        </div>
+        
+
+    </div>
+
+    <!-- 2. Education  -->
+    <div id="education">
+        <div><strong>Education</strong></div>
+        <div>
+            <ul>
+                <li><strong>University of The Bio-Bio, Chile. 2016-2021</strong></li>
+                <p style="margin: 0">Natural Resources Engineering</p>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. Projects  -->
+    <div id="projects">
+        <div><strong>Projects</strong></div>
+        <div>
+            <ul>
+                <li><strong><a href="https://github.com/boquila/boquilahub/" target="_blank">BoquilaHUB</a></strong>
+                    - The everything app for AI in conservation. Run AI models locally. Import your own models, and more</li>
+
+                <li><strong><a href="https://boquila.org/verse" target="_blank"> BoquilaVerse</a></strong>
+                    - Collection of 3D models generated using Gaussian Splaatting</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4. Experience  -->
+    <div id="experience">
+        <div><strong>Experience</strong></div>
+        <div>
+            <ul>
+                <li>
+                    <strong>Boquila Foundation</strong>
+                    <p><em>President, AI Engineer (2023 - 2024)</em></p>
+                    <p>Building PyTorch models to monitor biodiversity. Creating fast, memory-efficient AI inference binaries in Rust and integrating them into Flutter-based frontend apps for deployment. Leveraging A100s for model training and developing high-performance data processing pipelines with Rust and Julia.
+                       <a href="https://boquila.org/en" target="_blank">boquila.org</a></p>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <strong>SecurityAI</strong>
+                    <p><em>Full Stack, ML Engineer (2023 - 2024)</em></p>
+                    <p>Worked on frontend development using Flutter and deployed computer vision models with FastAPI and ONNX Runtime. 
+                       <a href="https://securityai.cl/en" target="_blank">securityai.cl</a></p>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <strong>ApiQuality SpA</strong>
+                    <p><em>ML Engineer (2023)</em></p>
+                    <p>Developed neural network models with PyTorch and deployed them using FastAPI.</p>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <strong>GeoPlants</strong>
+                    <p><em>Software Engineer (2021 - 2022)</em></p>
+                    <p>Designed and developed an app to support ecological restoration and protect native flora. 
+                       Tasks included web scraping with R, frontend development with Flutter, and backend organization using Firebase. 
+                       The app is scheduled for release soon.</p>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <strong>National Agency for Sustainability and Climate Change, Chile</strong>
+                    <p><em>BI Intern (2021)</em></p>
+                    <p>Standardized and organized datasets to align with frameworks for monitoring progress in clean production goals</p>
+                </li>
+            </ul>
+            
+            <ul>
+                <li>
+                    <strong>Plant Nursery at the University of the Bio-Bio</strong>
+                    <p><em>Director, IoT Engineer (2017 - 2021)</em></p>
+                    <p>Founded and managed a plant nursery, coordinating a team of about 60 volunteers to advance ecological restoration and native plant propagation. 
+                       Prototyped IoT-based irrigation systems. 
+                       Recognized by the European Union for this initiative. 
+                       <a href="https://www.instagram.com/p/CNbUPV3Fe38/">Recognition from the EU</a></p>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+
+    <!-- 5. Skills  -->
+    <div id="skills">
+        <div><strong>Technical Skills</strong></div>
+        <div>
+            <ul>
+                <li><strong>Python: </strong>NumPy, Pandas, PyTorch, OpenCV, Tensorflow, Scikit-learn, FastAPI, ONNX</li>
+                <li><strong>Rust: </strong> ORT, Axum, Ndarray</li>
+                <li><strong>Julia: </strong> DataFrames, Tidier, Type stability</li>
+                <li><strong>R: </strong> Tidyverse</li>
+                <li><strong>Dart: </strong> Flutter, FFI</li>
+                <li><strong>C/C++: </strong> ONNX, OpenCV</li>
+                <li><strong>IoT:  </strong> Arduino, ESP32,</li>
+                <li><strong>GIS: </strong> QGIS, ArcGIS</li>
+                <li><strong>Unreal Engine 5 </strong> </li> 
+            </ul>
+        </div>
+
+        <div><strong>Soft skills</strong></div>
+        <div>
+            <ul>
+                <li><strong>Problem solving mindset</strong></li>
+                <li><strong>Fast learner</strong></li>
+            </ul>
+        </div>
+
+        <div><strong>Areas of interest</strong></div>
+        <div>
+            <ul>
+                <li><strong>Artificial intelligence</strong></li>
+                <li><strong>Data analysis</strong></li>
+                <li><strong>Gaussian splattings</strong></li>
+                <li><strong>HPC</strong></li>
+                <li><strong>Game development</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. Contact  -->
+    <div id="contact">
+        <p>
+            Email: <a href="mailto:jose@boquila.org" target="_blank">jose@boquila.org</a><br>
+            LinkedIn: <a href="https://www.linkedin.com/in/josediazrrnn/"
+                target="_blank">https://www.linkedin.com/in/josediazrrnn/</a><br>
+            Github: <a href="https://github.com/jdiaz97" target="_blank">https://github.com/jdiaz97</a>
+        </p>
+    </div>
+
+    <!-- 7. get-resume -->
+    <div id="get-resume">
+        <p>Downloading resume..<br>
+            Note: If you are facing any problem, then click <strong><a href="./resume.pdf">HERE</a></strong> to download
+        </p>
+    </div>
+
+    <!-- 8. Error -->
+    <div id="error">
+        <p><strong>Error</strong>: Command not found! Enter <i>help</i> to get list of all available commands..</p>
+    </div>
+
+    <!-- 9. clear -->
+    <div id="clear"></div>
+
+    <!-- 10. Help -->
+    <div id="help">
+        <div>
+            ------------------ <br>
+            Built-in Commands <br>
+            ------------------ <br>
+            <p>about, education, projects, experience, skills,
+                contact, clear</p>
+        </div>
+    </div>
+    <!-- Resume sections end -->
+
+    <script type='text/javascript' src="resume.js"></script>
+
+    <script>
+        // Keep the existing JavaScript from resume.js
+        // Add this for the terminal buttons effect
+        document.querySelectorAll('.terminal-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.filter = 'brightness(0.8)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.filter = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
