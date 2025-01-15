@@ -150,7 +150,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Blinking cursor effect */
+        /* Blinking cursor effect
         #command-line::after {
             content: "▋";
             animation: blink 1s step-end infinite;
@@ -160,7 +160,7 @@
 
         @keyframes blink {
             50% { opacity: 0; }
-        }
+        } */
 
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -392,10 +392,10 @@
     </div>
     <!-- Resume sections end -->
 
-    <script type='text/javascript' src="resume.js"></script>
+    <script type='text/javascript' src="terminal.js"></script>
 
     <script>
-        // Keep the existing JavaScript from resume.js
+        // Keep the existing JavaScript from terminal.js
         // Add this for the terminal buttons effect
         document.querySelectorAll('.terminal-button').forEach(button => {
             button.addEventListener('mouseenter', () => {
