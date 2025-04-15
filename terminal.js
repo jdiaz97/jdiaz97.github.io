@@ -41,7 +41,7 @@ cmd.addEventListener("keyup", function(event) {
 
 function run_command(){
     var cmd = document.getElementById("command");    
-    var input = cmd.value;
+    var input = cmd.value.trim();
     var output;
     
     if(input != ''){
