@@ -18,7 +18,7 @@ An example of how AI is doing great things for the planet. This is about [Boquil
 
 The most important tool to monitor wildlife worldwide is camera traps. Every national park uses them.
 
-The problem is that this creates a lot of data—millions of images that have to be processed somehow. The most recent and most powerful models that we can use to automate these tasks are the following:
+The problem is that this creates a lot of data, millions of images that have to be processed somehow. The most recent and most powerful models that we can use to automate these tasks are the following:
 
 # SpeciesNet and MegaDetector
 
@@ -234,7 +234,7 @@ impl MegaDetector {
 
 ## Combining both models
 
-The rest is just hacky work—you can imagine it very easily. For each bounding box:  
+The rest is just hacky work, you can imagine it very easily. For each bounding box:  
 
 - Slice the image.  
 - Run the extra classification model (SpeciesNet).  
