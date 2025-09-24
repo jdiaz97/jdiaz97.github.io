@@ -8,7 +8,7 @@ title = "Home"
 
 # Who am I
 
-Programmer
+Programmer and Environmentalist.
 
 # Tools
 
