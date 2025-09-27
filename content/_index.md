@@ -6,8 +6,6 @@ title = "Home"
 <img src="img.webp" style="height: 500px; width: auto;">
 {% end %}
 
-# Who am I
-
 Programmer and Environmentalist.
 
 # Tools
@@ -20,3 +18,11 @@ Programmer and Environmentalist.
 - **C / C++:** ONNX, OpenCV, Open3D
 - **SQL:** PostgreSQL, MySQL, SQLite, Pgvector, Supabase
 - **JavaScript:** Vanilla JS, Bootstrap, HTML, CSS  
+
+# My guitar
+
+Italia Mondial Deluxe, modified
+
+{% crt() %}
+<img src="guitar.webp">
+{% end %}
