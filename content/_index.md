@@ -3,7 +3,7 @@ title = "Home"
 +++
 
 {% crt() %}
-<img src="img.webp" style="height: 500px; width: auto;">
+<img src="img.webp" style="max-width:100%; height:auto; display:block;">
 {% end %}
 
 Programmer and Environmentalist.
@@ -24,5 +24,5 @@ Programmer and Environmentalist.
 Italia Mondial Deluxe, modified
 
 {% crt() %}
-<img src="guitar.webp">
+<img src="guitar.webp" style="max-width:100%; height:auto; display:block;">
 {% end %}
