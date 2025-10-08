@@ -135,7 +135,8 @@ show_repo = false
 # i.e. "@/blog/_index.md".
 # See https://www.getzola.org/documentation/content/linking/#internal-links
 links = [
-	{ url = "@/blog/_index.md", name = "Blog" }
+	{ url = "@/blog/_index.md", name = "Blog" },
+	{ url = "@/projects/_index.md", name = "Projects" }
 ]
 
 [extra.footer]
