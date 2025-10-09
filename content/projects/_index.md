@@ -18,7 +18,9 @@ The best AI tool to monitor nature
 <img src="boquilaverse.webp" style="max-width:100%; height:auto; display:block;">
 {% end %}
 
-A collection of 3D models created for synthetic dataset creation.
+A collection of 3D models created using Gaussian Splatting, and then used for synthetic dataset creation.
+
+Still in development
 
 [boquila.org/verse](https://boquila.org/verse)
 
@@ -34,7 +36,7 @@ One-click RAG implementation, Simple and Portable.
 
 # TidierVest
 
-Web scraping in Julia. Based on rvest. (Faster than Beautiful Soup or Rvest)
+Web scraping in Julia, based on rvest. (Faster than Beautiful Soup or Rvest)
 
 ```julia
 using TidierVest
