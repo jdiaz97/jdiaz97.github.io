@@ -54,6 +54,16 @@ titles
 #  "The Force Awakens"
 ```
 
+# pdfx
+
+Minimal AI-retrival info on PDFs. Returns JSON.
+
+{% crt() %}
+<video src="pdfx.mp4" muted="" loop="" autoplay=""></video>
+{% end %}
+
+[github.com/jdiaz97/pdfx](https://github.com/jdiaz97/pdfx)
+
 # TBA
 
 Code quality assurance tool. For Rust and written in Rust.
