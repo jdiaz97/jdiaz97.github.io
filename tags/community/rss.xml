@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Greenblog - Community</title>
+      <link>https://jdiaz97.github.io/</link>
+      <description>Personal website</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://jdiaz97.github.io/tags/community/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 05 Oct 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>What Julia has that Rust desperately needs</title>
+          <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+          <author>José Díaz</author>
+          <link>https://jdiaz97.github.io/blog/what-julia-has-that-rust-needs/</link>
+          <guid>https://jdiaz97.github.io/blog/what-julia-has-that-rust-needs/</guid>
+          <description xml:base="https://jdiaz97.github.io/blog/what-julia-has-that-rust-needs/">&lt;h1 id=&quot;the-situation&quot;&gt;The situation&lt;&#x2F;h1&gt;
+&lt;p&gt;The crate &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;zmwangx&#x2F;rust-ffmpeg&quot;&gt;ffmpeg-next&lt;&#x2F;a&gt; is a fork of the original and abandoned &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;meh&#x2F;rust-ffmpeg&quot;&gt;ffmpeg&lt;&#x2F;a&gt; crate. Now, we have new forks like &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;shssoichiro&#x2F;ffmpeg-the-third&quot;&gt;ffmpeg-the-third&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nrbnlulu&#x2F;rffmpeg&quot;&gt;rffmpeg&lt;&#x2F;a&gt; that are more up-to-date. At the same time, ffmpeg-next is now trying to revive. So, which ffmpeg repo should I look at now? Sorry if reading that made you dizzy, but that’s how bad the situation is.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;oknozor&#x2F;speculoos&quot;&gt;speculoos&lt;&#x2F;a&gt; is a fork of the unmaintained &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;cfrancia&#x2F;spectral&quot;&gt;spectral&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The great &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pykeio&#x2F;ort&quot;&gt;ort&lt;&#x2F;a&gt; is a fork of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nbigaouette&#x2F;onnxruntime-rs&quot;&gt;onnxruntime-rs&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;fff-rs&#x2F;juice&quot;&gt;juice&lt;&#x2F;a&gt; is a fork of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;autumnai&#x2F;leaf&quot;&gt;leaf&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;chyh1990&#x2F;yaml-rust&quot;&gt;yaml-rust&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Ethiraric&#x2F;yaml-rust2&quot;&gt;yaml-rust2&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dtolnay&#x2F;serde-yaml&quot;&gt;serde-yaml&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bourumir-wyngs&#x2F;serde-yaml-bw&quot;&gt;serde-yaml-bw&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;It is normal for people to drop open-source software; I’m not saying they should keep working forever. But it’s sad that one person gets to gatekeep everyone else and say, “This is abandoned, I’ll keep the crate name so now you have to make a worse one or be creative.”&lt;&#x2F;p&gt;
+&lt;p&gt;Anyway, so. What if all the disorganized effort was centralized and focused?&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;how-julia-solved-this-problem&quot;&gt;How Julia solved this problem&lt;&#x2F;h1&gt;
+&lt;p&gt;The Julia community faced the exact same problem in the past. The solution is quite simple: let’s move the packages into &lt;a href=&quot;https:&#x2F;&#x2F;julialang.org&#x2F;community&#x2F;organizations&#x2F;&quot;&gt;self-organized GitHub organizations&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Packages for biology? You have &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;BioJulia&quot;&gt;BioJulia&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Packages for data? You have &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JuliaData&quot;&gt;JuliaData&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Packages for TidyVerse-inspired packages? You have &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;TidierOrg&quot;&gt;TidierOrg&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;By doing this:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The repos won’t become inaccessible forever&lt;&#x2F;li&gt;
+&lt;li&gt;You have other members (maybe) supporting your work&lt;&#x2F;li&gt;
+&lt;li&gt;We get less noise (fewer forks) and more productivity&lt;&#x2F;li&gt;
+&lt;li&gt;We get a wonderful sense of community&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I think governance problems can emerge if people can’t respect each other but the gains are worth considering. This is a HUGE positive for Julia, and I think Rust needs this too.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;faq&quot;&gt;FAQ&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;strong&gt;Q:&lt;&#x2F;strong&gt; This is not just a Rust problem btw, every programming language has this.&lt;br &#x2F;&gt;
+&lt;strong&gt;A:&lt;&#x2F;strong&gt; They should fix it too. Just talking about what I see.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
