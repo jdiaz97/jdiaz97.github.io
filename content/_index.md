@@ -18,6 +18,7 @@ Programmer and Environmentalist.
 - **C / C++:** ONNX, OpenCV, Open3D
 - **SQL:** PostgreSQL, MySQL, SQLite, Pgvector, Supabase
 - **JavaScript:** Vanilla JS, Bootstrap, HTML, CSS  
+- **GIS:** QGIS, ArcGIS, Google Earth Engine, GIS libraries in R and Python  
 
 # My guitar
 
