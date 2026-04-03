@@ -8,7 +8,7 @@ title = "Greenblog"
 
 Programmer and Environmentalist.
 
-# Tools
+# Tools I like
 
 - **Rust:** ORT, Axum, Tokio, Rayon, Ndarray, Egui, Images
 - **Python:** PyTorch, TensorFlow, Scikit-learn, Hugging Face Transformers, Pydantic, RAG, Structured Output, FastAPI, Uvicorn, NumPy, Pandas, Polars, OpenCV, SQLAlchemy  
@@ -20,10 +20,16 @@ Programmer and Environmentalist.
 - **JavaScript:** Vanilla JS, Bootstrap, HTML, CSS  
 - **GIS:** QGIS, ArcGIS, Google Earth Engine, GIS libraries in R and Python  
 
-# My guitar
+# My guitars
 
 Italia Mondial Deluxe, modified
 
 {% crt() %}
 <img src="guitar.webp" style="max-width:100%; height:auto; display:block;">
+{% end %}
+
+Italia Modulo Tipo 3
+
+{% crt() %}
+<img src="guitar2.webp" style="max-width:100%; height:auto; display:block;">
 {% end %}
