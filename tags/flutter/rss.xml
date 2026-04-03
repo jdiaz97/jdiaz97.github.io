@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Greenblog - Flutter</title>
+      <link>https://jdiaz97.github.io/</link>
+      <description>Personal website</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://jdiaz97.github.io/tags/flutter/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 24 Jun 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Why I Switched from Flutter + Rust to Rust + egui</title>
+          <pubDate>Tue, 24 Jun 2025 00:00:00 +0000</pubDate>
+          <author>José Díaz</author>
+          <link>https://jdiaz97.github.io/blog/flutter-to-egui/</link>
+          <guid>https://jdiaz97.github.io/blog/flutter-to-egui/</guid>
+          <description xml:base="https://jdiaz97.github.io/blog/flutter-to-egui/">&lt;p&gt;This is just a personal experience, there are no absolute truths. Like in any other blog post, a lot of the things you&#x27;ll read here could be just a skill issue, or legitimate issues. It&#x27;s up to you to decide.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;flutter-rust&quot;&gt;Flutter + Rust&lt;&#x2F;h1&gt;
+&lt;p&gt;We had an app that had a nice Flutter UI that called Rust binaries. The bindings were generated using &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;fzyzcjy&#x2F;flutter_rust_bridge&quot;&gt;flutter_rust_bridge&lt;&#x2F;a&gt;, which is an amazing piece of software. A lot of people have built large and complex apps using this tool. It&#x27;s crazy how far it can just work, just by running:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;flutter_rust_bridge_codegen generate&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;That&#x27;s really all it takes for many, many, many cases.&lt;&#x2F;p&gt;
+&lt;p&gt;But I got frustrated for the few times that &#x27;generate&#x27; won&#x27;t work, for the times where FFI wasn&#x27;t just working, and for the times that I had to spend energy designing a public API that was 100% friendly for Rust &amp;lt;-&amp;gt; Flutter.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;rust-egui&quot;&gt;Rust + egui&lt;&#x2F;h1&gt;
+&lt;p&gt;After some time of being frustrated with the current stack, I was thinking of dropping Flutter, I didn&#x27;t want to think about FFI anymore. I chose &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;emilk&#x2F;egui&quot;&gt;egui&lt;&#x2F;a&gt; to check if it was feasible to move the UI code with very little friction. I came to know about egui because of the extremely impressive work they&#x27;ve done to build &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rerun-io&#x2F;rerun&quot;&gt;rerun&lt;&#x2F;a&gt;. I was very motivated to try this.&lt;&#x2F;p&gt;
+&lt;p&gt;After rewriting most of the UI code in egui during a weekend, I decided to move and leave Flutter behind. But why?&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;minimizing-complexity&quot;&gt;Minimizing complexity&lt;&#x2F;h1&gt;
+&lt;p&gt;Having 2 programming languages adds complexity. BoquilaHUB is a small software project, I don&#x27;t want it to have unnecessary complexity.&lt;&#x2F;p&gt;
+&lt;p&gt;Not all complexity is unnecessary, you do sometimes need it in order to make progress and get things done. So, how much complexity is unnecessary complexity?&lt;&#x2F;p&gt;
+&lt;p&gt;We can measure this by looking at lines of code. In my case, &#x27;flutter_rust_bridge_codegen generate&#x27; will generate a few thousand lines of code. I don&#x27;t understand this generated code, it&#x27;s not readable. Do I really want to have some code I don&#x27;t understand in my project folder? In earlier versions of the project, sometimes the amount of generated lines would be higher than the lines written by me. This balance would change depending on the API, but it&#x27;s always quite big.&lt;&#x2F;p&gt;
+&lt;p&gt;I want to understand my project, I want to understand what I&#x27;m compiling. I can&#x27;t optimize generated lines that aren&#x27;t readable and will change in mysterious ways when I change the API.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;playing-to-my-strengths&quot;&gt;Playing to my strengths&lt;&#x2F;h1&gt;
+&lt;p&gt;There is only 1 programmer in the project, and that&#x27;s me. I was hoping to get funding to get an actually good GUI person who could make great use of Flutter to create a wonderful GUI experience. That didn&#x27;t happen, so the Flutter capabilities were very underused.&lt;&#x2F;p&gt;
+&lt;p&gt;Flutter:&lt;&#x2F;p&gt;
+&lt;img src=&quot;flutter_rust.jpg&quot; style=&quot;height: 500px; width: auto;&quot;&gt;
+&lt;p&gt;Egui:&lt;&#x2F;p&gt;
+&lt;img src=&quot;flutter_rust2.jpg&quot; style=&quot;height: 500px; width: auto;&quot;&gt;
+&lt;p&gt;Of course, making the Flutter one look good is possible and easy if you&#x27;re good at it. I wasn&#x27;t, and egui just worked better for me. I didn&#x27;t even make an effort to make it look good; I just grabbed a minimal template and modified it, and it looks great.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;immediate-mode-is-a-great-paradigm-for-ui&quot;&gt;Immediate mode is a great paradigm for UI&lt;&#x2F;h1&gt;
+&lt;p&gt;A quick Google search with &quot;flutter setstate is not refreshing&quot; reveals a struggle that you will face quite often when running Flutter. It sounds like an easy fix, but the nature of Flutter using a bunch of nested Widgets creates, naturally, lasagna code that makes it hard to reason about this.&lt;&#x2F;p&gt;
+&lt;p&gt;When moving to egui, I recreated the whole UI with 0 cases of this problem. It&#x27;s a different paradigm, in every frame the UI will refresh, so you don&#x27;t have to struggle. You don&#x27;t have to make complex callbacks or deal with state management frameworks like getx, provider, bloc, or whatever else there is. If you work with the paradigm and not against it, you&#x27;re done, you can make great progress.&lt;&#x2F;p&gt;
+&lt;p&gt;Do you need to add a button? In Rust:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;if&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other&quot;&gt; ui&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;button&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;click me&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;clicked&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable z-language&quot;&gt;    self&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;did_user_click &lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-language&quot;&gt; true&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; trigger a bunch of logic elsewhere, if you want!&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; also do whatever you want&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;That&#x27;s it, you will 100% see the change in your UI, no callbacks, no stateful vs stateless widgets, no googling why your UI is not refreshing. No learning a new metaframework (getx, bloc, provider, etc) for a framework (flutter) to deal with state. It just works in egui.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;performance&quot;&gt;Performance&lt;&#x2F;h1&gt;
+&lt;p&gt;This is not about Rust being fast and Dart being slow. It&#x27;s about my personal appreciation that the final app in 100% Rust was faster.&lt;&#x2F;p&gt;
+&lt;p&gt;The previous slowness maybe was a side effect of having unmonitored FFI, how much was I cloning? I don&#x27;t know. The app calls ONNX Runtime, which is written in C. This is called from Rust using &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pykeio&#x2F;ort&quot;&gt;ort&lt;&#x2F;a&gt;, and before, Dart would call these binaries to let me do the inference in Flutter. Maybe all of this made the app drag a bit.&lt;&#x2F;p&gt;
+&lt;p&gt;Now it just feels faster and way more snappy.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;anyway&quot;&gt;Anyway&lt;&#x2F;h1&gt;
+&lt;p&gt;That&#x27;s it. If you fancy AI for biodiversity, feel free to support &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;boquila&#x2F;boquilahub&#x2F;&quot;&gt;BoquilaHUB&lt;&#x2F;a&gt; at this &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;boquila.org&#x2F;donate&quot;&gt;link&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
