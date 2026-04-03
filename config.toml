@@ -14,12 +14,10 @@ author = "Duck Quack"
 taxonomies = [{ name = "tags", feed = true }]
 
 [markdown]
-highlight_code = true
-highlight_theme = "css"
-highlight_themes_css = [
-	{ theme = "solarized-dark", filename = "syntax-theme-dark.css" },
-	{ theme = "solarized-light", filename = "syntax-theme-light.css" }
-]
+[markdown.highlighting]
+style = "class"
+light_theme = "solarized-light"
+dark_theme = "solarized-dark"
 smart_punctuation = true
 bottom_footnotes = true
 github_alerts = true
